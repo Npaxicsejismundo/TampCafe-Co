@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics=""><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0}
+body{background:#FBF7F0;color:#263530;font-family:Outfit,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#3E534B;text-decoration:none}
+a:hover{color:#A85A33}
+*{box-sizing:border-box}
+::selection{background:#EDC76F;color:#263530}
+@keyframes tampRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+</style></helmet>
+
+<div style="min-height:100vh;background:#FBF7F0">
+
+<div style="position:sticky;top:0;z-index:50;background:rgba(251,247,240,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(38,53,48,.1)">
+<div style="max-width:1280px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;gap:36px">
+<div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:11px;cursor:pointer;flex:none">
+<img src="./tamp-wordmark.png" alt="Tamp Cafe &amp; Co." style="height:36px;width:auto;display:block;mix-blend-mode:multiply">
+</div>
+<div style="display:flex;align-items:center;gap:4px;margin-left:auto">
+<sc-for list="{{ nav }}" as="item" hint-placeholder-count="6">
+<div onClick="{{ item.go }}" style="position:relative;padding:9px 14px;cursor:pointer;font-size:14.5px;font-weight:500;letter-spacing:.01em;color:#3E534B" style-hover="color:#263530">
+{{ item.label }}
+<sc-if value="{{ item.active }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:14px;right:14px;bottom:2px;height:2px;background:#F0A98E;border-radius:2px"></div></sc-if>
+</div>
+</sc-for>
+</div>
+<a href="#order" style="flex:none;padding:11px 20px;background:#3E534B;color:#FBF7F0;border-radius:999px;font-size:13.5px;font-weight:600;letter-spacing:.02em" style-hover="background:#263530;color:#FBF7F0">Pre-order a cake</a>
+</div>
+</div>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div>
+
+<sc-if value="{{ heroA }}" hint-placeholder-val="{{ true }}">
+<div style="max-width:1280px;margin:0 auto;padding:72px 32px 20px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:center">
+<div style="animation:tampRise .7s ease both">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:26px">
+<div style="width:9px;height:10px;background:#F0A98E;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)"></div>
+<div style="width:9px;height:10px;background:#93B4AC;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)"></div>
+<div style="width:9px;height:10px;background:#EDC76F;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)"></div>
+<span style="font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#5C6B64">Cebu City · Since 2019</span>
+</div>
+<h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:76px;line-height:.98;letter-spacing:-.015em;margin:0 0 24px;color:#263530;text-wrap:pretty">It's always a special moment at <span style="font-style:italic;color:#3E534B">Tamp</span>.</h1>
+<p style="font-size:17.5px;line-height:1.62;color:#4A5C55;margin:0 0 32px;max-width:52ch;text-wrap:pretty">Tamp Cafe &amp; Co. offers unique flavors in a relaxing ambiance. Think of a friend you'd love to share great news about and celebrate occasions with, or confide problems with.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:38px">
+<div onClick="{{ goMenu }}" style="padding:15px 28px;background:#3E534B;color:#FBF7F0;border-radius:999px;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:#263530">See the menu</div>
+<div onClick="{{ goCake }}" style="padding:15px 28px;background:transparent;border:1.5px solid rgba(38,53,48,.22);border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;color:#263530" style-hover="border-color:#3E534B;background:rgba(62,83,75,.05)">Browse cakes</div>
+</div>
+<div style="display:flex;gap:34px;padding-top:26px;border-top:1px solid rgba(38,53,48,.12)">
+<div><div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1;color:#263530">4</div><div style="font-size:12.5px;color:#5C6B64;margin-top:5px">branches in Cebu</div></div>
+<div><div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1;color:#263530">7:30–22:00</div><div style="font-size:12.5px;color:#5C6B64;margin-top:5px">open daily</div></div>
+<div><div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1;color:#263530">30+</div><div style="font-size:12.5px;color:#5C6B64;margin-top:5px">signature cakes</div></div>
+</div>
+</div>
+<div style="position:relative">
+<div style="position:relative;height:560px;border-radius:220px 220px 16px 16px;overflow:hidden;background:#EDE7DD">
+<image-slot id="home-hero-a" shape="rect" placeholder="Interior shot — Lahug dining room"></image-slot>
+</div>
+<div style="position:absolute;left:-28px;bottom:44px;background:#FBF7F0;border:1px solid rgba(38,53,48,.12);border-radius:14px;padding:16px 20px;box-shadow:0 18px 40px rgba(38,53,48,.1)">
+<div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A85A33;margin-bottom:6px">New this month</div>
+<div style="font-family:'Instrument Serif',serif;font-size:22px;line-height:1.1;color:#263530">Cereal Chicken</div>
+<div style="font-size:13px;color:#5C6B64;margin-top:3px">₱385 · to share</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ heroB }}" hint-placeholder-val="{{ false }}">
+<div style="padding:24px 32px 0">
+<div style="max-width:1280px;margin:0 auto;position:relative;height:640px;border-radius:20px;overflow:hidden;background:#263530">
+<image-slot id="home-hero-b" shape="rect" placeholder="Full-bleed hero — table of food &amp; drinks"></image-slot>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(38,53,48,.55) 0%,rgba(38,53,48,.2) 40%,rgba(38,53,48,.82) 100%);pointer-events:none"></div>
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:56px;pointer-events:none">
+<div style="font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#EDC76F;margin-bottom:18px">#AlwaysASpecialMomentAtTampCafe</div>
+<h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:88px;line-height:.95;letter-spacing:-.02em;margin:0 0 20px;color:#FBF7F0;max-width:20ch">Unique flavors, in a relaxing ambiance.</h1>
+<p style="font-size:17px;line-height:1.6;color:rgba(251,247,240,.86);margin:0;max-width:56ch">Open daily 7:30am – 10:00pm across four branches in Cebu City. Coffee, all-day breakfast, Asian comfort plates and a cake chiller worth the detour.</p>
+</div>
+</div>
+<div style="max-width:1280px;margin:-1px auto 0;background:#3E534B;border-radius:0 0 20px 20px;padding:22px 40px;display:flex;flex-wrap:wrap;align-items:center;gap:28px;justify-content:space-between">
+<sc-for list="{{ branchesShort }}" as="b" hint-placeholder-count="4">
+<div><div style="font-size:14.5px;font-weight:600;color:#FBF7F0">{{ b.name }}</div><div style="font-size:12.5px;color:rgba(251,247,240,.8);margin-top:3px">{{ b.where }}</div></div>
+</sc-for>
+<div onClick="{{ goMenu }}" style="padding:12px 24px;background:#EDC76F;color:#263530;border-radius:999px;font-size:14px;font-weight:600;cursor:pointer" style-hover="background:#F0A98E">See the menu</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ heroC }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1280px;margin:0 auto;padding:64px 32px 20px">
+<h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:132px;line-height:.86;letter-spacing:-.035em;margin:0 0 8px;color:#263530">Coffee, plates</h1>
+<div style="display:flex;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:34px">
+<h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-style:italic;font-size:132px;line-height:.86;letter-spacing:-.035em;margin:0;color:#A85A33">&amp; cake.</h1>
+<p style="font-size:16.5px;line-height:1.6;color:#4A5C55;margin:0 0 14px;max-width:38ch">Four Tamp branches in Cebu City, open daily from 7:30am to 10:00pm. Come for breakfast, stay for the chiller.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:200px 200px;gap:14px">
+<div style="grid-column:span 2;grid-row:span 2;border-radius:16px;overflow:hidden;background:#EDE7DD"><image-slot id="home-hero-c1" shape="rect" placeholder="Dining room"></image-slot></div>
+<div style="border-radius:16px;overflow:hidden;background:#EDE7DD"><image-slot id="home-hero-c2" shape="rect" placeholder="Latte"></image-slot></div>
+<div style="grid-row:span 2;border-radius:16px;overflow:hidden;background:#EDE7DD"><image-slot id="home-hero-c3" shape="rect" placeholder="Cake slice"></image-slot></div>
+<div style="border-radius:16px;overflow:hidden;background:#EDE7DD"><image-slot id="home-hero-c4" shape="rect" placeholder="Pasta plate"></image-slot></div>
+</div>
+</div>
+</sc-if>
+
+<div style="max-width:1280px;margin:0 auto;padding:10px 32px 0;display:flex;align-items:center;gap:10px;justify-content:flex-end">
+<span style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C6B64">Hero direction</span>
+<sc-for list="{{ heroOpts }}" as="h" hint-placeholder-count="3">
+<div onClick="{{ h.go }}" style="cursor:pointer">
+<sc-if value="{{ h.active }}" hint-placeholder-val="{{ false }}"><div style="padding:6px 13px;border-radius:999px;background:#3E534B;color:#FBF7F0;font-size:12px;font-weight:600">{{ h.label }}</div></sc-if>
+<sc-if value="{{ h.off }}" hint-placeholder-val="{{ true }}"><div style="padding:6px 13px;border-radius:999px;background:transparent;border:1px solid rgba(38,53,48,.18);color:#5C6B64;font-size:12px;font-weight:600" style-hover="border-color:#3E534B;color:#263530">{{ h.label }}</div></sc-if>
+</div>
+</sc-for>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:72px 32px 0">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:26px">
+<h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:40px;line-height:1;margin:0;color:#263530">New on the board</h2>
+<div onClick="{{ goMenu }}" style="font-size:14px;font-weight:600;color:#A85A33;cursor:pointer">Full menu →</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px">
+<sc-for list="{{ newItems }}" as="n" hint-placeholder-count="4">
+<div style="background:#FFFFFF;border:1px solid rgba(38,53,48,.09);border-radius:16px;overflow:hidden" style-hover="border-color:rgba(38,53,48,.22)">
+<div style="height:220px;background:#EDE7DD"><image-slot id="{{ n.slot }}" shape="rect" placeholder="{{ n.name }}"></image-slot></div>
+<div style="padding:18px 18px 20px">
+<div style="font-family:'Instrument Serif',serif;font-size:21px;line-height:1.15;color:#263530">{{ n.name }}</div>
+<div style="font-size:13.5px;line-height:1.5;color:#5C6B64;margin-top:6px;min-height:40px">{{ n.desc }}</div>
+<div style="font-size:14px;font-weight:600;color:#3E534B;margin-top:10px">{{ n.price }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:84px 32px 0">
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+<sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+<div style="background:#FFFFFF;border:1px solid rgba(38,53,48,.09);border-radius:18px;overflow:hidden;display:flex;flex-direction:column">
+<div style="height:280px;background:#EDE7DD"><image-slot id="{{ p.slot }}" shape="rect" placeholder="{{ p.slotLabel }}"></image-slot></div>
+<div style="padding:26px 26px 28px;display:flex;flex-direction:column;gap:12px;flex:1">
+<div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A85A33">{{ p.kicker }}</div>
+<div style="font-family:'Instrument Serif',serif;font-size:29px;line-height:1.05;color:#263530">{{ p.title }}</div>
+<div style="font-size:14.5px;line-height:1.55;color:#5C6B64;flex:1">{{ p.body }}</div>
+<div onClick="{{ p.go }}" style="align-self:flex-start;margin-top:4px;padding:12px 22px;border-radius:999px;background:#F0A98E;color:#263530;font-size:14px;font-weight:600;cursor:pointer" style-hover="background:#EDC76F">{{ p.cta }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="margin-top:88px;background:#3E534B;padding:76px 32px">
+<div style="max-width:1280px;margin:0 auto">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:34px">
+<h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:40px;line-height:1;margin:0;color:#FBF7F0">Four rooms, one Tamp</h2>
+<div onClick="{{ goContact }}" style="font-size:14px;font-weight:600;color:#EDC76F;cursor:pointer">Directions &amp; numbers →</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px">
+<sc-for list="{{ branches }}" as="b" hint-placeholder-count="4">
+<div style="border-top:1px solid rgba(251,247,240,.25);padding-top:18px">
+<div style="font-family:'Instrument Serif',serif;font-size:26px;line-height:1.05;color:#FBF7F0">{{ b.name }}</div>
+<div style="font-size:13.5px;line-height:1.6;color:rgba(251,247,240,.84);margin-top:10px">{{ b.address }}</div>
+<div style="font-size:13.5px;color:rgba(251,247,240,.84);margin-top:8px">{{ b.phone }}</div>
+<div style="font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#EDC76F;margin-top:14px">{{ b.hours }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<sc-if value="{{ showReviews }}" hint-placeholder-val="{{ true }}">
+<div style="max-width:1280px;margin:0 auto;padding:84px 32px 0">
+<h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:40px;line-height:1;margin:0 0 30px;color:#263530">What regulars say</h2>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px">
+<sc-for list="{{ reviews }}" as="r" hint-placeholder-count="4">
+<div style="background:#FFFFFF;border:1px solid rgba(38,53,48,.09);border-radius:16px;padding:26px 28px">
+<div style="font-size:13px;letter-spacing:.24em;color:#EDC76F;margin-bottom:14px">★★★★★</div>
+<p style="font-family:'Instrument Serif',serif;font-size:20px;line-height:1.45;color:#263530;margin:0 0 16px;text-wrap:pretty">{{ r.quote }}</p>
+<div style="font-size:12.5px;color:#5C6B64">{{ r.by }} · Google review, {{ r.branch }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<div id="order" style="max-width:1280px;margin:84px auto 0;padding:0 32px">
+
+<div style="background:#F0A98E;border-radius:22px;padding:64px 56px;display:flex;justify-content:center;text-align:center">
+<div style="max-width:620px">
+
+<h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:52px;line-height:1;margin:0 0 16px;color:#263530">Cake for the occasion?</h2><p style="font-size:16.5px;line-height:1.6;color:#3E3028;margin:0 auto 28px">Fill out the Cake Order Form and pre-order at least two days in advance. Slices are always available at the chiller counter.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+<a href="#order" style="padding:15px 30px;background:#263530;color:#FBF7F0;border-radius:999px;font-size:15px;font-weight:600" style-hover="background:#3E534B;color:#FBF7F0">Cake order form</a>
+<div onClick="{{ goCake }}" style="padding:15px 30px;border:1.5px solid rgba(38,53,48,.3);border-radius:999px;font-size:15px;font-weight:600;cursor:pointer;color:#263530" style-hover="background:rgba(251,247,240,.74)">See all cakes</div>
+</div>
+</div>
+
+</div></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMenuPage }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1280px;margin:0 auto;padding:56px 32px 0">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:30px">
+<div>
+<div style="font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#A85A33;margin-bottom:12px">{{ menuKicker }}</div>
+<h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:62px;line-height:.98;margin:0;color:#263530">{{ menuTitle }}</h1>
+<p style="font-size:15.5px;line-height:1.6;color:#5C6B64;margin:14px 0 0;max-width:60ch">{{ menuBlurb }}</p>
+</div>
+<div style="display:flex;align-items:center;gap:10px;background:#FFFFFF;border:1px solid rgba(38,53,48,.14);border-radius:999px;padding:12px 20px;min-width:290px">
+<span style="font-size:15px;color:#5C6B64">⌕</span>
+<input value="{{ q }}" onChange="{{ onSearch }}" placeholder="Search dishes, drinks, prices" style="border:none;outline:none;background:transparent;font-family:Outfit,sans-serif;font-size:14.5px;color:#263530;width:100%">
+</div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;padding-bottom:22px;border-bottom:1px solid rgba(38,53,48,.12)">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+<div onClick="{{ t.go }}" style="cursor:pointer">
+<sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 20px;border-radius:999px;background:#3E534B;color:#FBF7F0;font-size:14px;font-weight:600">{{ t.label }}</div></sc-if>
+<sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}"><div style="padding:10px 20px;border-radius:999px;background:#FFFFFF;border:1px solid rgba(38,53,48,.14);color:#3E534B;font-size:14px;font-weight:600" style-hover="border-color:#3E534B">{{ t.label }}</div></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="columns:2;column-gap:56px;padding:40px 0 0">
+<sc-for list="{{ sections }}" as="sec" hint-placeholder-count="6">
+<div style="break-inside:avoid;margin-bottom:42px">
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:16px">
+<div style="width:8px;height:9px;background:#EDC76F;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);flex:none"></div>
+<h3 style="font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:0;color:#3E534B">{{ sec.name }}</h3>
+<span style="font-size:12.5px;font-style:italic;color:#5C6B64">{{ sec.note }}</span>
+</div>
+<sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="4">
+<div style="padding:9px 0;border-bottom:1px dashed rgba(38,53,48,.1)">
+<div style="display:flex;align-items:baseline;gap:10px">
+<div style="font-size:16px;font-weight:500;color:#263530">{{ it.n }}</div>
+<div style="flex:1;border-bottom:1px dotted rgba(38,53,48,.22);transform:translateY(-4px)"></div>
+<div style="font-size:15px;font-weight:600;color:#3E534B;flex:none">{{ it.p }}</div>
+</div>
+<div style="font-size:13px;line-height:1.5;color:#5C6B64;margin-top:3px;max-width:48ch">{{ it.d }}</div>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+<sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+<div style="padding:60px 0 20px;text-align:center;font-family:'Instrument Serif',serif;font-size:26px;color:#5C6B64">Nothing matches “{{ q }}” on this board.</div>
+</sc-if>
+<div style="margin-top:20px;padding:24px 28px;background:#FFFFFF;border:1px solid rgba(38,53,48,.09);border-radius:16px;font-size:13px;line-height:1.7;color:#5C6B64">
+<strong style="color:#3E534B;font-weight:600">Add-ons</strong> — White Rice 60 · Garlic Rice 85 · Brown Rice 85 · Quinoa Mix 120 · Papadum 30 (pc) · Potato Chips 75 · Eggs (2pcs) 110. Rice swaps: to Garlic or Brown Rice 55, to Quinoa Mix 85.<br>
+Prices are VAT inclusive and subject to 6% service charge, and may change without prior notice. Our food may contain allergens — kindly inform any of our servers if you have food allergies. Menu June 2026.
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCake }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1280px;margin:0 auto;padding:56px 32px 0">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;margin-bottom:56px">
+<div>
+<div style="font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#A85A33;margin-bottom:14px">Tamp Signature Cakes</div>
+<h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:70px;line-height:.95;margin:0 0 20px;color:#263530">Baked for the <span style="font-style:italic">occasion</span>.</h1>
+<p style="font-size:16.5px;line-height:1.62;color:#4A5C55;margin:0 0 26px;max-width:50ch">Whole cakes are made to order — please pre-order at least two days in advance. Slices are available daily at the chiller counter in all four branches.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<a href="#order" style="padding:15px 28px;background:#3E534B;color:#FBF7F0;border-radius:999px;font-size:15px;font-weight:600" style-hover="background:#263530;color:#FBF7F0">Open the cake order form</a>
+</div>
+</div>
+<div style="height:380px;border-radius:18px;overflow:hidden;background:#EDE7DD"><image-slot id="cake-hero" shape="rect" placeholder="Cake chiller counter / signature cake"></image-slot></div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;padding-bottom:22px;border-bottom:1px solid rgba(38,53,48,.12);margin-bottom:34px">
+<sc-for list="{{ cakeTabs }}" as="t" hint-placeholder-count="4">
+<div onClick="{{ t.go }}" style="cursor:pointer">
+<sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}"><div style="padding:10px 20px;border-radius:999px;background:#3E534B;color:#FBF7F0;font-size:14px;font-weight:600">{{ t.label }}</div></sc-if>
+<sc-if value="{{ t.off }}" hint-placeholder-val="{{ true }}"><div style="padding:10px 20px;border-radius:999px;background:#FFFFFF;border:1px solid rgba(38,53,48,.14);color:#3E534B;font-size:14px;font-weight:600" style-hover="border-color:#3E534B">{{ t.label }}</div></sc-if>
+</div>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px 18px">
+<sc-for list="{{ cakes }}" as="c" hint-placeholder-count="12">
+<div style="display:flex;flex-direction:column">
+<div style="aspect-ratio:1/1;border-radius:14px;overflow:hidden;background:#EDE7DD"><image-slot id="{{ c.slot }}" shape="rect" placeholder="{{ c.name }}"></image-slot></div>
+<div style="font-family:'Instrument Serif',serif;font-size:21px;line-height:1.12;color:#263530;margin-top:14px">{{ c.name }}</div>
+<div style="font-size:13px;line-height:1.5;color:#5C6B64;margin-top:5px;flex:1">{{ c.desc }}</div>
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(38,53,48,.1)">
+<span style="font-size:15px;font-weight:600;color:#3E534B">{{ c.price }}</span>
+<span style="font-size:12.5px;color:#5C6B64">{{ c.label }}</span>
+<span style="margin-left:auto;font-size:12.5px;color:#5C6B64;text-align:right">{{ c.alt }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="margin-top:44px;padding:26px 30px;background:#FFFFFF;border:1px solid rgba(38,53,48,.09);border-radius:16px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<div style="flex:1;min-width:280px">
+<div style="font-family:'Instrument Serif',serif;font-size:24px;color:#263530">Pre-order at least 2 days in advance</div>
+<div style="font-size:14px;color:#5C6B64;margin-top:5px">Pick-up at Lahug, Banilad Town Centre, Kasambagan or Banawa.</div>
+</div>
+<a href="#order" style="padding:14px 26px;background:#EDC76F;color:#263530;border-radius:999px;font-size:14.5px;font-weight:600" style-hover="background:#F0A98E;color:#263530">Order here</a>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isEvents }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="max-width:1280px;margin:0 auto;padding:56px 32px 0">
+<div style="background:#263530;border-radius:20px;padding:64px 56px;position:relative;overflow:hidden">
+<div style="position:relative;z-index:2;max-width:60%">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:22px">
+<div style="width:26px;height:29px;background:#F0A98E;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)"></div>
+<span style="font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#EDC76F">The Pelican Event Hall · by Tamp</span>
+</div>
+<h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:74px;line-height:.95;margin:0 0 20px;color:#FBF7F0">Where your best moments begin.</h1>
+<p style="font-size:17px;line-height:1.6;color:rgba(251,247,240,.82);margin:0 0 30px;max-width:54ch">Cozy, beautiful spaces in the heart of Cebu City for intimate weddings, birthdays, corporate gatherings and celebrations of every kind. Kasambagan seats up to 42 guests; Banilad Town Centre up to 120.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<a href="#order" style="padding:15px 28px;background:#EDC76F;color:#263530;border-radius:999px;font-size:15px;font-weight:600" style-hover="background:#F0A98E;color:#263530">Check availability</a>
+<a href="#order" style="padding:15px 28px;border:1.5px solid rgba(251,247,240,.35);color:#FBF7F0;border-radius:999px;font-size:15px;font-weight:600" style-hover="background:rgba(251,247,240,.12);color:#FBF7F0">Inquire now</a>
+</div>
+</div>
+<div style="position:absolute;right:0;top:0;bottom:0;width:42%;background:#EDE7DD"><image-slot id="events-hero" shape="rect" placeholder="Styled event hall — long table setup"></image-slot></div>
+</div>
+</div>
+<div style="max-width:1280px;margin:0 auto;padding:56px 32px 0">
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+<sc-for list="{{ venues }}" as="v" hint-placeholder-count="2">
+<div style="background:#FFFFFF;border:1px solid rgba(38,53,48,.09);border-radius:18px;overflow:hidden">
+<div style="height:260px;background:#EDE7DD"><image-slot id="{{ v.slot }}" shape="rect" placeholder="{{ v.slotLabel }}"></image-slot></div>
+<div style="padding:28px 30px 30px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px">
+<div style="font-family:'Instrument Serif',serif;font-size:30px;line-height:1.05;color:#263530">{{ v.name }}</div>
+<div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#A85A33">{{ v.cap }}</div>
+</div>
+<div style="font-size:14.5px;line-height:1.6;color:#5C6B64;margin-top:12px">{{ v.address }}</div>
+<div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(38,53,48,.1);font-size:13.5px;line-height:1.75;color:#5C6B64">
+<div style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#3E534B;margin-bottom:6px">Event times</div>
+<div>Lunch: 11:00 am – 3:00 pm · 12:00 noon – 4:00 pm</div>
+<div>Dinner: 5:00 pm – 9:00 pm · 6:00 pm – 10:00 pm</div>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="max-width:1280px;margin:0 auto;padding:64px 32px 0">
+<h2 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:44px;line-height:1;margin:0 0 8px;color:#263530">Buffet menus</h2>
+<p style="font-size:15.5px;color:#5C6B64;margin:0 0 30px">Every package includes salad, pasta, mains, brownie bites for dessert, one round of dalandan juice and plain rice.</p>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px">
+<sc-for list="{{ buffets }}" as="b" hint-placeholder-count="3">
+<div style="background:#FFFBF4;border:1px solid rgba(38,53,48,.1);border-radius:16px;padding:30px 28px 26px;display:flex;flex-direction:column">
+<div style="font-family:'Instrument Serif',serif;font-style:italic;font-size:34px;line-height:1;color:#263530">{{ b.name }}</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#A85A33;margin-top:6px">{{ b.tag }}</div>
+<div style="margin-top:20px;display:flex;flex-direction:column;gap:14px;flex:1">
+<sc-for list="{{ b.courses }}" as="c" hint-placeholder-count="4">
+<div>
+<div style="font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#93B4AC">{{ c.label }}</div>
+<div style="font-size:14px;line-height:1.55;color:#3E534B;margin-top:3px">{{ c.items }}</div>
+</div>
+</sc-for>
+</div>
+<div style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(38,53,48,.12)">
+<sc-for list="{{ b.tiers }}" as="t" hint-placeholder-count="3">
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:4px 0;color:#5C6B64">
+<span>{{ t.pax }}</span><span style="font-weight:600;color:#263530">{{ t.price }}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="margin-top:36px;padding:28px 32px;background:#3E534B;border-radius:18px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<div style="flex:1;min-width:300px">
+<div style="font-family:'Instrument Serif',serif;font-size:27px;color:#FBF7F0">Hall viewing &amp; inquiries</div>
+<div style="font-size:14.5px;color:rgba(251,247,240,.86);margin-top:6px">Ms. Marie, Events Coordinator — 0968-856-8074, 10:00am to 7:00pm.</div>
+</div>
+<a href="#order" style="padding:14px 26px;background:#EDC76F;color:#263530;border-radius:999px;font-size:14.5px;font-weight:600" style-hover="background:#F0A98E;color:#263530">Book a viewing</a>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1280px;margin:0 auto;padding:56px 32px 0">
+<div style="max-width:60ch;margin-bottom:46px">
+<div style="font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#A85A33;margin-bottom:14px">Visit us</div>
+<h1 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:66px;line-height:.96;margin:0 0 18px;color:#263530">Four branches across Cebu City.</h1>
+<p style="font-size:16.5px;line-height:1.6;color:#4A5C55;margin:0">Open daily from 7:30am to 10:00pm. Craving Tamp at home? We're on Grab and Foodpanda too.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<sc-for list="{{ branches }}" as="b" hint-placeholder-count="4">
+<div style="background:#FFFFFF;border:1px solid rgba(38,53,48,.09);border-radius:18px;overflow:hidden;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)">
+<div style="min-height:280px;background:#EDE7DD"><image-slot id="{{ b.slot }}" shape="rect" placeholder="{{ b.name }} interior"></image-slot></div>
+<div style="padding:36px 40px;display:flex;flex-direction:column;gap:14px">
+<div style="font-family:'Instrument Serif',serif;font-size:36px;line-height:1.02;color:#263530">{{ b.name }}</div>
+<div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#93B4AC">Open daily {{ b.hours }}</div>
+<div style="font-size:15.5px;line-height:1.6;color:#4A5C55">{{ b.address }}</div>
+<div style="font-size:15.5px;color:#4A5C55">{{ b.phone }}</div>
+<div style="font-size:14px;line-height:1.6;color:#5C6B64">{{ b.extra }}</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:10px">
+<a href="#order" style="padding:11px 20px;border:1.5px solid rgba(38,53,48,.18);border-radius:999px;font-size:13.5px;font-weight:600;color:#263530" style-hover="border-color:#3E534B;background:rgba(62,83,75,.05);color:#263530">Get directions</a>
+<a href="#order" style="padding:11px 20px;background:#3E534B;color:#FBF7F0;border-radius:999px;font-size:13.5px;font-weight:600" style-hover="background:#263530;color:#FBF7F0">Order on Grab</a>
+<a href="#order" style="padding:11px 20px;background:#F0A98E;color:#263530;border-radius:999px;font-size:13.5px;font-weight:600" style-hover="background:#EDC76F;color:#263530">Foodpanda</a>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="margin-top:28px;padding:30px 34px;background:#EDC76F;border-radius:18px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+<div style="flex:1;min-width:300px">
+<div style="font-family:'Instrument Serif',serif;font-size:29px;color:#263530">Looking for an opportunity? Join our team.</div>
+<div style="font-size:14.5px;color:#3A3220;margin-top:6px">We're hiring across all four Tamp branches and The Pelican Event Hall.</div>
+</div>
+<a href="#order" style="padding:14px 28px;background:#263530;color:#FBF7F0;border-radius:999px;font-size:14.5px;font-weight:600" style-hover="background:#3E534B;color:#FBF7F0">Apply here</a>
+</div>
+</div>
+</sc-if>
+
+<div style="margin-top:96px;background:#263530;padding:64px 32px 34px">
+<div style="max-width:1280px;margin:0 auto">
+<div style="display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,.9fr));gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(251,247,240,.16)">
+<div>
+<div style="font-family:'Instrument Serif',serif;font-size:38px;line-height:1;color:#FBF7F0">tamp<span style="color:#F0A98E">.</span></div>
+<div style="font-size:11.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:rgba(251,247,240,.8);margin-top:8px">Cafe &amp; Co.</div>
+<p style="font-size:14.5px;line-height:1.6;color:rgba(251,247,240,.82);margin:20px 0 0;max-width:34ch">#AlwaysASpecialMomentAtTampCafe — Cebu City, open daily 7:30am to 10:00pm.</p>
+</div>
+<div>
+<div style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#EDC76F;margin-bottom:14px">Eat &amp; drink</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:14.5px;color:rgba(251,247,240,.88)">
+<div onClick="{{ goMenu }}" style="cursor:pointer" style-hover="color:#FBF7F0">Tamp menu</div>
+<div onClick="{{ goBlacksheep }}" style="cursor:pointer" style-hover="color:#FBF7F0">Black Sheep menu</div>
+<div onClick="{{ goCake }}" style="cursor:pointer" style-hover="color:#FBF7F0">Signature cakes</div>
+</div>
+</div>
+<div>
+<div style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#EDC76F;margin-bottom:14px">Celebrate</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:14.5px;color:rgba(251,247,240,.88)">
+<div onClick="{{ goEvents }}" style="cursor:pointer" style-hover="color:#FBF7F0">The Pelican Event Hall</div>
+<div onClick="{{ goEvents }}" style="cursor:pointer" style-hover="color:#FBF7F0">Buffet menus</div>
+<div onClick="{{ goContact }}" style="cursor:pointer" style-hover="color:#FBF7F0">Careers</div>
+</div>
+</div>
+<div>
+<div style="font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#EDC76F;margin-bottom:14px">Follow</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:14.5px;color:rgba(251,247,240,.88)">
+<a href="#order" style="color:rgba(251,247,240,.88)" style-hover="color:#FBF7F0">Facebook</a>
+<a href="#order" style="color:rgba(251,247,240,.88)" style-hover="color:#FBF7F0">Instagram</a>
+<a href="#order" style="color:rgba(251,247,240,.88)" style-hover="color:#FBF7F0">TikTok</a>
+</div>
+</div>
+</div>
+<div style="padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;color:rgba(251,247,240,.74)">
+<span>Copyright © 2026 Tamp Cafe &amp; Co. — All Rights Reserved.</span>
+<span>Mockup · not the live site</span>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showReviews&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Homepage&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home', hero: 'a', tab: 'Food', cakeTab: 'Cakes', q: '' };
+
+  go = (page) => () => this.setState({ page, q: '', tab: page === 'blacksheep' ? 'Black Sheep food' : 'Food' });
+
+  data() {
+    const T = (n, p, d) => ({ n, p: '₱' + p, d: d || '' });
+    return {
+      Food: [
+        { name: 'Cafe specials', items: [
+          T('Shrimps in Thai Street Cilantro Sauce', 435, 'Stir fried shrimps (skin and head on for more flavor) in our Thai Street Cilantro Sauce'),
+          T('Seared Fish in Calamansi & Butter Sauce', 495, 'Fillet of fresh marlin or mahi-mahi, salty and tangy calamansi butter sauce, white rice'),
+          T('Vietnamese Hangover Shrimp Bowl', 475, 'Stir fry shrimps on our lemongrass coconut rice, spiced cucumber, fried egg and onions (mild spicy)'),
+          T('Bak Kut Teh (Pork Rib Soup)', 455, 'Popular in Singapore — prime pork ribs slow cooked till tender, mixed with herb spices and garlic, white rice'),
+          T('Crab Omelette', 485, '3 egg crab omelette in crab roe, curry and spices, served with our thai street cilantro sauce and house salad'),
+          T('Crispy Beef Masala on Cilantro Rice Pilaf', 495, 'Fried Indian masala spiced tender cut beef with yogurt sauce on cilantro cucumber rice pilaf'),
+          T('Spanish Chorizo & Peeled Shrimp Pasta', 495, 'Smoky Spanish chorizo and sauteed peeled shrimps on al dente pasta spaghetti, mild spicy'),
+          T('Chicken Bake Tomato Rice', 385, 'Crusted chicken, italian cheese on tomato brown rice'),
+          T('Sticky Korean Chicken Wings', 475, 'To share — tossed in our house sweet korean sauce, mild spicy'),
+          T('Cereal Chicken', 385, 'New! Breakfast cereal coated chicken, asian herbs with a buttery fragrance, originated from Singapore. Mildly spicy (can take out spice for kids)')
+        ]},
+        { name: 'Soup & starters', items: [
+          T('Salmon Croquettes', 275, '5 bite size croquettes, wasabi mayo dip, nori'),
+          T('Truffled Mushroom Soup', 175, 'Lightly herbed, mushroom bits, croutons, truffle'),
+          T('French Onion Soup', 245, 'Beef stock, caramelized onion, bread, italian cheese'),
+          T('Potato Chips with Garlic Mayo Dip', 285, 'Thinly sliced, crispy potato chips with garlic mayo dip')
+        ]},
+        { name: 'All day breakfast', items: [
+          T('Spinach Omelette', 395, 'Spiced spinach, mushrooms, mozzarella cheese, side salad (mild spicy)'),
+          T('Tomato & Basil Omelette', 365, 'Fresh basil leaves, tomatoes, mozzarella cheese, side salad'),
+          T('Bacon and Mushroom Omelette', 475, 'Shitake, mozzarella cheese, side salad'),
+          T('Dark Yogurt Bowl', 385, 'Homemade blended banana yogurt with cocoa, almond granola, cacao nibs, seasonal fruits'),
+          T('Pink Granola Fruit Bowl', 395, 'Seasonal — homemade blended dragon fruit and banana yogurt, almond granola, organic chia, coconut chips'),
+          T('Green Power Boost Smoothie', 395, 'Banana, spinach, yogurt, mango, almond granola, nuts, chia, coconut chips'),
+          T('French Toast', 375, 'Lightly flavored with cinnamon, topped with granola, honey lemon syrup. Add fruits +125, add bacon +165'),
+          T('Spanish Chorizo Breakfast', 375, 'New! Lightly spicy chorizo bunkag, paprika, garlic, tornado eggs, rice')
+        ]},
+        { name: 'Salads', items: [
+          T('Salted Egg w/ Mango Quinoa Salad', 455, 'Salted eggs, mango, quinoa, tomato, cucumber with citrus vinaigrette'),
+          T('Tupplenut', 385, 'Our classic favorite — tuna salad on a bed of green lettuce, apple, candied walnut, cucumber and tomatoes with honey mustard vinaigrette'),
+          T('Mango Kani', 385, 'Mango, crabsticks, tomato, cucumber, dried seaweed with mayo and honey mustard vinaigrette')
+        ]},
+        { name: 'Grilled sandwiches', note: 'white bread', items: [
+          T('Tomato and Basil Fontina', 335, 'Basil leaves, fresh tomatoes, fontina italian cheese'),
+          T('Tuna Sandwich', 345, 'Tuna salad with tomato and cucumber, fontina italian cheese'),
+          T('Angus Beef Cheesesteak', 445, 'Angus beef, caramelized onions, fontina cheese')
+        ]},
+        { name: 'Chicken', items: [
+          T('Chicken Parmigiana', 375, 'Best of Cebu! Crusted chicken with marinara sauce over garlic olive oil pasta'),
+          T('Korean Sticky Chicken Bibimbap', 395, 'Crispy boneless chicken tossed in korean style sauce, carrots, cucumber, sunny egg, with rice, mild spicy'),
+          T('Prawn Paste Chicken', 395, 'Must try! Singaporean inspired dish — fried prawn paste marinated chicken, mango cilantro salad, rice'),
+          T('Chicken Pops!', 265, 'Kids meal — served with scrambled egg, white rice and juice')
+        ]},
+        { name: 'Pork', items: [
+          T('Pork Kawali in Tomato Onion Stew', 375, 'Pork kawali in a salty and sweet tomato onion stew, white rice'),
+          T('Twin Chops', 395, '2pcs pan seared pork chops with herb butter, garlic rice'),
+          T('Tamp Pork Ribs', 495, 'Prime cut ribs with bbq sauce, side salad, garlic rice'),
+          T('Caramelized Asian Pork Donburi', 465, 'Asian glazed saucy sticky pork, spinach, sunny egg on garlic rice')
+        ]},
+        { name: 'Beef', items: [
+          T('Beef Stroganoff', 395, 'Slow cooked beef in a creamy white sauce, with garlic rice'),
+          T('Slow Cooked Pot Roast Beef', 485, '3 hours slow cooked beef with potato & carrots in a hearty broth, served with white rice')
+        ]},
+        { name: 'Fish', items: [
+          T('Torched Salmon and Quinoa Salad', 495, 'Torched fillet of salmon, mixed quinoa salad & spiced spinach'),
+          T('Glazed Salmon Donburi', 475, 'Salmon cubes in special glaze, carrots, cucumber, corn, nori, rice'),
+          T('Boneless Bangus (Milkfish)', 395, 'Pan-fried, boneless, marinated milkfish with sunny egg, garlic rice')
+        ]},
+        { name: 'Pasta', items: [
+          T('Tomato and Basil Pasta', 295, 'Tomato and fresh basil with parmesan cheese'),
+          T('Bacon Alfredo', 385, 'Bacon, shitake in a creamy parmesan white sauce'),
+          T('White Truffle Pasta', 395, 'Truffle cream white sauce, mushrooms')
+        ]}
+      ],
+      Drinks: [
+        { name: 'Tamp special egg cloud drinks', note: 'real whisked eggs, no preservatives', items: [
+          T('Coffee Cloud Latte', '235', 'Iced, with espresso'), T('Chocolate Mousse Cloud', '235', 'Iced'), T('Vietnamese Egg Coffee', '235', 'Hot')
+        ]},
+        { name: 'Brew bar', items: [
+          T('V60 Japan Hario Pour Over', '150'), T('White Brew', '150', '4 for 500 promo'), T('French Press', '195', 'Serves 1–2'),
+          T('Traditional Vietnamese Phin Coffee', '160', 'Strong'), T('Affogato', '265', 'Vanilla ice cream with a hazelnut chocolate bottom + espresso')
+        ]},
+        { name: 'Flavored coffee', note: 'hot / iced', items: [
+          T('Spanish Latte', '175 / 195'), T('Dirty Matcha', '195 / 225'), T('Café Mocha', '175 / 195'), T('Caramel Macchiato', '175 / 195'),
+          T('Dirty French Vanilla', '195 / 225'), T('Sea Salt Macchiato', '225', 'Iced, new!'), T('Peach Black', '195', 'Iced black coffee, peach syrup, new!')
+        ]},
+        { name: 'Coffee-free', note: 'hot / iced', items: [
+          T('Chai Tea Latte', '175 / 195'), T('Chai Chocolate Latte', '225 / 245'), T('French Vanilla', '175 / 195'),
+          T('Matcha Green Tea Latte', '185 / 205', 'Now with more matcha'), T('Sea Salt Matcha', '235', 'Iced, new!')
+        ]},
+        { name: 'Espresso', items: [
+          T('Espresso w/ milk', '175 / 195', 'Café latte, cappuccino, flat white, gibraltar cortado'), T('Espresso w/ oat milk', '205 / 225'),
+          T('Americano', '155 / 165'), T('Espresso Double', '120')
+        ]},
+        { name: 'Mocktails', note: 'iced, non-alcoholic', items: [
+          T('Refresher', '195', 'Mango, basil'), T('Revitalize', '195', 'Honey, lemon, ginger'),
+          T('Recover', '245', 'Freshly squeezed oranges, ginger, celery'), T('Rehydrate!', '195', 'Fresh cucumber, ginger, basil')
+        ]},
+        { name: 'Blended fruit drinks', note: 'iced', items: [
+          T('Mango Passionfruit', '175'), T('Pink Lemonade', '175'), T('The Popeye Smoothie', '195', 'Lunch on the go — banana, spinach, yogurt, chia')
+        ]},
+        { name: 'Frappe', note: 'with a shot of espresso', items: [
+          T('Café Caramel', '195'), T('Java Chip', '195'), T('Mocha', '195'),
+          T('Strawberries and Cream', '215', 'No coffee'), T('Matcha Green Tea', '245', 'No coffee, now with more matcha'), T('Double Chocolate', '255', 'No coffee')
+        ]},
+        { name: 'Tea & milk tea', items: [
+          T('Tea', '145', 'Hot — Sencha, Royal Darjeeling Oolong, Moonfruit Black Tea, Vanilla Bourbon (Rooibos)'),
+          T('Steeped Milk Tea', '165 / 185', 'Hot / iced'), T('Classic Hong Kong Milk Tea', '155', 'Real milk tea, the healthy way'), T('Milo Dinosaur', '175')
+        ]},
+        { name: 'Brewed iced tea', items: [
+          T('Red Raspberry Black Tea', '165'), T('Passion Fruit Chia Jasmine Tea', '195')
+        ]},
+        { name: 'Chocolate pour over', note: 'hot / iced', items: [
+          T('Dark Chocolate', '225 / 225', 'With espresso 265'), T('Milk Chocolate', '225', 'Hot'), T('Tamp Signature Chocolate', '225', 'Hot')
+        ]},
+        { name: 'With ice cream', items: [
+          T('Brownie ala Mode', '195'), T('Mango Brownie ala Mode', '285'), T('Vanilla Ice Cream', '90', '1 scoop')
+        ]},
+        { name: 'Other beverages', items: [
+          T('Freshly Squeezed Orange Juice', '295'), T('Soda', '85'), T('Mineral Water', '55'), T('Calamansi', '125', 'Hot / iced')
+        ]}
+      ],
+      Breakfast: [
+        { name: 'Omelettes', note: '7:30 – 10:30 am', items: [
+          T('Crab Omelette', 485, '3 egg crab omelette in crab roe, curry and spices, served with our thai street cilantro sauce and house salad'),
+          T('Spinach Omelette', 395, 'Mild spicy — spiced spinach, mushrooms, mozzarella cheese, side salad'),
+          T('Tomato & Basil Omelette', 365, 'Fresh basil leaves, tomatoes, mozzarella cheese, side salad'),
+          T('Bacon and Mushroom Omelette', 475, 'Shitake, mozzarella cheese, side salad')
+        ]},
+        { name: 'Healthy bowls', items: [
+          T('Dark Yogurt Bowl', 385, 'Homemade banana yogurt with cocoa, almond granola, cacao nibs, seasonal fruits'),
+          T('Pink Granola Fruit Bowl', 395, 'Homemade dragon fruit and banana yogurt, almond granola, organic chia, seasonal fruits, coconut chips'),
+          T('Green Power Boost Smoothie', 395, 'Banana, spinach, yogurt, mango, almond granola, nuts, chia, coconut chips')
+        ]},
+        { name: 'Full plates', items: [
+          T('Boneless Bangus (Milkfish)', 395, 'Pan-fried, boneless, marinated milkfish with sunny egg, garlic rice'),
+          T('Twin Chops', 395, '2pcs pan seared pork chops with herb butter, garlic rice'),
+          T('Big Bacon Breakfast', 395, 'Sunny eggs, shitake, garlic rice and side salad. Extra bacon (4–5 strips) +165'),
+          T('Chicken Bake Tomato Rice', 385, 'Crusted chicken, mozzarella cheese on tomato brown rice'),
+          T('Spanish Chorizo Breakfast', 375, 'New! Lightly spicy chorizo bunkag, paprika, garlic, tornado eggs, rice'),
+          T('French Toast', 375, 'Add fruits (kiwi, bananas, mangoes) +125, add bacon +165')
+        ]},
+        { name: 'Soup & sandwiches', note: 'white bread', items: [
+          T('Tomato and Basil Fontina', 335, 'Basil leaves, fresh tomatoes, fontina italian cheese'),
+          T('Tuna Sandwich', 345, 'Tuna salad with tomato and cucumber, fontina'),
+          T('Angus Beef Cheesesteak Sandwich', 445, 'Angus beef, caramelized onions, fontina'),
+          T('Truffled Mushroom Soup', 175, 'Lightly herbed, mushroom bits, croutons, truffle'),
+          T('French Onion Soup', 245, 'Beef stock, caramelized onion, bread, italian cheese')
+        ]}
+      ],
+      'Family box': [
+        { name: 'Take home — family box', note: '1 box serves 3 to 4 persons sharing', items: [
+          T('Shrimps in Thai Street Cilantro Sauce', 900, 'Stir fried shrimps (skin and head on for more flavor) in our Thai Street Cilantro Sauce'),
+          T('Sticky Korean Chicken Wings', 475, 'Chicken wings tossed in our house sweet korean sauce, perfect for sharing'),
+          T('Glazed Salmon', '1,100', 'Salmon cubes in japanese glaze'),
+          T('Herbed Butter Pork Chops', 690, 'Can be chopped into bite sized pieces if requested — 4 pieces chops'),
+          T('Tamp Pork Ribs', 850, 'Fall off the bone ribs with bbq sauce'),
+          T('Slow Cooked Pot Roast Beef', '1,150', '3 hours slow cooked beef with potato and carrots in brown broth'),
+          T('Beef Stroganoff', 790, 'Slow cooked beef in a creamy white sauce with fried garlic'),
+          T('Pasta Bacon Alfredo', 690, 'Bacon and mushroom in a creamy parmesan white sauce'),
+          T('Beef Stroganoff Pasta', 620, 'Slow cooked slices of beef in a creamy white sauce'),
+          T('White Truffle Pasta', 730, 'Truffled creamy white sauce')
+        ]},
+        { name: 'Suggested boxes', items: [
+          T('4–6 persons', '2 to 3 boxes'), T('7–9 persons', '3 to 5 boxes'), T('10–12 persons', '4 to 6 boxes'), T('13–15 persons', '5 to 7 boxes')
+        ]}
+      ],
+      'Black Sheep food': [
+        { name: 'Black Sheep specials', items: [
+          T('Cereal Prawn', 495, 'To share — breakfast cereal coated shrimps, asian herbs with a buttery fragrance, originated from Singapore. Mildly spicy'),
+          T('Peri Peri Chicken', 475, 'Grilled chicken breast, mediterranean spices, homemade mildly spiced peri peri sauce, seared yellow rice'),
+          T('Thai Tom Kha Fish Soup', 495, 'White marlin fish or mahi-mahi steamed with lemongrass, cilantro, curry and thai herbs with coconut cream — a fresh and light tasting soup'),
+          T('Beef Gyudon', 475, 'Thinly sliced beef with balanced lean and fat to give that traditional gyudon umami, onions, onsen egg, japanese rice'),
+          T('Spinach and Blue Cheese Pasta', 395, 'Blanched spinach, bechamel, blue cheese'),
+          T('Pasta Nero', 335, 'Cuttlefish ink, garlic, spaghetti pasta')
+        ]},
+        { name: 'Salads', items: [
+          T('Salted Egg w/ Mango Quinoa Salad', 455, 'Salted egg, mango, quinoa, tomato, cucumber with citrus vinaigrette'),
+          T('Tupplenut', 385, 'Our classic favorite — tuna salad on a bed of green lettuce, apple, candied walnut, cucumber and tomatoes with honey mustard vinaigrette'),
+          T('Mango Kani', 385, 'Mango, crabsticks, tomato, cucumber, dried seaweed with mayo and honey mustard vinaigrette'),
+          T('Grilled Chicken Caesar Salad', 465, 'New! Romaine leaf, other greens, anchovies cream, 75g grilled chicken breast')
+        ]},
+        { name: 'Chicken', items: [
+          T('Chicken Parmigiana', 375, 'Best of Cebu! Crusted chicken with marinara sauce over garlic olive oil pasta'),
+          T('Korean Sticky Chicken Bibimbap', 395, 'Crispy boneless chicken tossed in korean style sauce, carrots, cucumber, sunny egg, with rice, mild spicy'),
+          T('Prawn Paste Chicken', 395, 'Must try! Fried prawn paste marinated chicken, mango cilantro salad, rice'),
+          T('Chicken Bake Tomato Rice', 385, 'Crusted chicken, mozzarella cheese on tomato brown rice'),
+          T('Cereal Chicken', 385, 'New! To share, no rice — breakfast cereal coated chicken, asian herbs with a buttery fragrance, mildly spicy'),
+          T('Chicken Pops!', 265, 'Kids meal — served with scrambled egg, white rice and juice')
+        ]},
+        { name: 'Pork', items: [
+          T('Pork Kawali in Tomato Onion Stew', 375, 'Pork kawali in a salty and sweet tomato onion stew, white rice'),
+          T('Twin Chops', 395, '2pcs pan seared pork chops with herb butter, garlic rice'),
+          T('Tamp Pork Ribs', 495, 'Prime cut ribs with bbq sauce, side salad, garlic rice'),
+          T('Caramelized Asian Pork Donburi', 465, 'Asian glazed saucy sticky pork, spinach, sunny egg on garlic rice'),
+          T('Bak Kut Teh (Pork Rib Soup)', 455, 'Prime pork ribs slow cooked till tender, mixed with herb spices and garlic, white rice')
+        ]},
+        { name: 'Beef', items: [
+          T('Beef Stroganoff', 395, 'Slow cooked beef in a creamy white sauce, with garlic rice'),
+          T('Slow Cooked Pot Roast Beef', 485, '3 hours slow cooked beef with potato & carrots in a hearty broth, served with white rice'),
+          T('Crispy Beef Masala on Cilantro Rice Pilaf', 495, 'Fried Indian masala spiced tender cut beef with yogurt sauce on cilantro cucumber rice pilaf')
+        ]},
+        { name: 'Fish, shrimp & crab', items: [
+          T('Torched Salmon and Quinoa Salad', 495, 'Torched fillet of salmon, mixed quinoa salad & spiced spinach'),
+          T('Glazed Salmon Donburi', 475, 'Salmon cubes in special glaze, carrots, cucumber, corn, nori, rice'),
+          T('Boneless Bangus (Milkfish)', 395, 'Pan-fried, boneless, marinated milkfish with sunny egg, garlic rice'),
+          T('Shrimps in Thai Street Cilantro Sauce', 435, 'Stir fried shrimps (skin and head on for more flavor) in our Thai Street Cilantro Sauce'),
+          T('Seared Fish in Calamansi & Butter Sauce', 495, 'Fillet of fresh marlin or mahi, salty & tangy calamansi butter sauce, white rice'),
+          T('Vietnamese Hangover Shrimp Bowl', 475, 'Stir fry shrimps on our lemongrass coconut rice, spiced cucumber, fried egg and onions (mild spicy)'),
+          T('Crab Omelette', 485, '3 egg crab omelette in crab roe, curry and spices, served with our thai street cilantro sauce and house salad')
+        ]},
+        { name: 'Soup & starters', items: [
+          T('Salmon Croquettes', 275, '5 bite size croquettes, wasabi mayo dip, nori'),
+          T('Truffled Mushroom Soup', 175, 'Lightly herbed, mushroom bits, croutons, truffle'),
+          T('French Onion Soup', 245, 'Beef stock, caramelized onion, bread, mozzarella cheese'),
+          T('Potato Chips with Garlic Mayo Dip', 285, 'Thinly sliced, crispy potato chips with garlic mayo dip'),
+          T('Sticky Korean Chicken Wings', 475, 'To share — chicken wings tossed in our house sweet korean sauce, mild spicy')
+        ]},
+        { name: 'Pasta', items: [
+          T('Tomato and Basil Pasta', 295), T('Bacon Alfredo', 385), T('White Truffle Pasta', 395),
+          T('Spanish Chorizo & Peeled Shrimp Pasta', 495, 'Smoky Spanish chorizo and sauteed peeled shrimps on al dente pasta spaghetti, mild spicy')
+        ]},
+        { name: 'Sandwich / all day breakfast', items: [
+          T('Tomato and Basil Fontina Sandwich', 335, 'Basil leaves, fresh tomatoes, italian fontina cheese'),
+          T('Tuna Sandwich', 345, 'Tuna salad with tomato and cucumber, italian fontina cheese'),
+          T('Angus Beef Cheesesteak Sandwich', 445, 'Angus beef, caramelized onions, italian fontina cheese'),
+          T('Spinach Omelette', 395, 'Spiced spinach, mushrooms, fontina cheese, side salad'),
+          T('Tomato & Basil Omelette', 365, 'Fresh basil leaves, tomatoes, fontina cheese, side salad'),
+          T('Bacon and Mushroom Omelette', 475, 'Shitake, fontina cheese, side salad'),
+          T('Dark Yogurt Bowl', 385, 'Homemade blended banana yogurt with cocoa, almond granola, cacao nibs, seasonal fruits'),
+          T('Big Bacon Breakfast', 395, 'Sunny eggs, shitake, garlic rice and side salad. Extra bacon (4–5 strips) +165')
+        ]}
+      ],
+      'Black Sheep drinks': [
+        { name: 'Black Sheep specials', note: 'hot / iced', items: [
+          T('Pistachio Latte', '265 / 275'), T('Horchata Cereal Latte', '175', 'Iced — recommended for kids'),
+          T('Matcha Cold Foam', '185', 'Iced — orange peel cold foam'), T('Hibiscus Yuzu Iced Tea', '185', 'Iced'),
+          T('Black Honey & Oat Latte', '225', 'Iced — made with Australian honey, cinnamon'),
+          T('Dirty Oat Matcha', '235 / 245'), T('Banoffee Frappe', '245', 'Real bananas and a shot of espresso')
+        ]},
+        { name: 'Tamp special egg cloud drinks', note: 'real whisked eggs, no preservatives', items: [
+          T('Coffee Cloud Latte', '235', 'Iced, with espresso'), T('Chocolate Mousse Cloud', '235', 'Iced'), T('Vietnamese Egg Coffee', '235', 'Hot')
+        ]},
+        { name: 'Brew bar', items: [
+          T('V60 Japan Hario Pour Over', '150'), T('White Brew', '150', '4 for 500 promo'), T('French Press', '195', 'Serves 1–2'),
+          T('Traditional Vietnamese Phin Coffee', '160', 'Strong'), T('Affogato', '265', 'Vanilla ice cream with a hazelnut chocolate bottom + espresso')
+        ]},
+        { name: 'Flavored coffee', note: 'hot / iced', items: [
+          T('Spanish Latte', '175 / 195'), T('Dirty Matcha', '195 / 225'), T('Café Mocha', '175 / 195'), T('Caramel Macchiato', '175 / 195'),
+          T('Dirty French Vanilla', '195 / 225'), T('Sea Salt Macchiato', '225', 'Iced, new!'), T('Peach Black', '195', 'Iced black coffee, peach syrup, new!')
+        ]},
+        { name: 'Coffee-free', note: 'hot / iced', items: [
+          T('Chai Tea Latte', '175 / 195'), T('Chai Chocolate Latte', '225 / 245'), T('French Vanilla', '175 / 195'),
+          T('Matcha Green Tea Latte', '185 / 205'), T('Sea Salt Matcha', '235', 'Iced, new!')
+        ]},
+        { name: 'Mocktails', note: 'iced, non-alcoholic', items: [
+          T('Refresher', '195', 'Mango, basil'), T('Revitalize', '195', 'Honey, lemon, ginger'),
+          T('Recover', '245', 'Freshly squeezed oranges, ginger, celery'), T('Rehydrate!', '195', 'Fresh cucumber, ginger, basil')
+        ]},
+        { name: 'Blended & frappe', items: [
+          T('Mango Passionfruit', '175'), T('Pink Lemonade', '175'), T('The Popeye Smoothie', '195', 'Banana, spinach, yogurt, chia'),
+          T('Café Caramel Frappe', '195'), T('Java Chip', '195'), T('Mocha', '195'), T('Double Chocolate', '255', 'No coffee')
+        ]},
+        { name: 'Chocolate pour over', note: 'hot / iced', items: [
+          T('Dark Chocolate', '225 / 225', 'With espresso 265'), T('Milk Chocolate', '225', 'Hot'), T('Tamp Signature Chocolate', '225', 'Hot')
+        ]}
+      ]
+    };
+  }
+
+  cakeData() {
+    const C = (name, price, label, alt, desc) => ({ name, price: '₱' + price, label, alt, desc, slot: 'cake-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-') });
+    return {
+      Cakes: [
+        C('Chocolate Blackout', '990', 'whole', '₱150 slice', 'Moist chocolate cake with dark chocolate filling'),
+        C('Rainbow Cake', '1,240', 'whole', '₱160 slice', 'Layers of cake full of flavors with cream cheese icing and easy meringue'),
+        C('Carrot Walnut Cake', '1,140', 'whole', '₱150 slice', 'Carrot cake with cream cheese frosting'),
+        C('Chocolate Velvet', '1,240', 'whole', '₱160 slice', 'Dark velvet chocolate mousse on a smooth base'),
+        C('Yema Cake', '1,140', 'whole', '₱150 slice', 'Chiffon and moist cheese cake with yema filling'),
+        C('Caramel Delight', '1,040', 'whole', '₱150 slice', 'Moist chocolate cake with caramel filling, best in Cebu'),
+        C('Mocha Mousse', '1,040', 'whole', '₱150 slice', 'Moist sponge cake with mocha mousse filling'),
+        C('Strawberry Bliss', '1,140', 'whole', '₱150 slice', 'Chiffon cake with strawberry mousse filling'),
+        C('Matcha Shortcake', '1,300', 'whole', '₱170 slice', 'Fluffy vanilla sponge with green tea and fresh cream, made with real matcha'),
+        C('Matcha Basque', '2,100', 'whole', '₱190 slice', 'Matcha flavor, light and rich layer, with a caramelised top for that rich, creamy cheesecake'),
+        C('Mango Mousse', '1,040', 'whole', '₱150 slice', 'Fresh chiffon cake with mango mousse and mango sauce'),
+        C('Red Velvet Cheesecake', '1,880', 'whole', '₱210 slice', 'White chiffon and red velvet with a gentle velvety and cream cheese filling'),
+        C('Brownie Cheesecake', '850', 'whole', '₱105 slice', 'Fudgy brownie base, warmed with rum, creamy and delicious'),
+        C('Basque Cheesecake', '1,900', 'whole', '₱180 slice', 'Light, tart, indulgent, with a caramelised top for that rich, creamy cheesecake'),
+        C('Blueberry Cheesecake', '1,390', 'whole', '₱170 slice', 'Baked cheesecake topped with blueberry filling'),
+        C('Lemon Cheesecake', '1,390', 'whole', '₱170 slice', 'Creamy cheesecake with a bright, zesty lemon glaze'),
+        C('Ube Pastillas Cake', '990', 'whole', '₱150 slice', 'Ube and pastillas — filled with layers of grated ube and condensed milk filling'),
+        C('Ube Velvet', '1,590', 'whole', '₱190 slice', 'Layers of moist ube cake and butter flan with ube filling on top'),
+        C('Biscoff Cheesecake', '1,390', 'whole', '₱170 slice', 'Baked cheesecake topped with biscoff filling'),
+        C('Pistachio Decadence', '2,350', 'whole', '₱240 slice', 'Layers of rich chocolate crunchy nuts and a silky pistachio cream and mousse for the ultimate indulgence'),
+        C('Mango Meringue', '1,590', 'whole', '₱180 slice', 'Chiffon cake with fresh mangoes on layers, whipped cream filling and a fresh meringue'),
+        C('Lemon Meringue', '1,290', 'whole', '₱170 slice', 'Zesty lemon torte crowned with a fluffy toasted meringue')
+      ],
+      'Cookies & bars': [
+        C('Pistachio Chocolate Cookie', '150', 'per piece', '', 'Chewy chocolate cookie layered with a crisp, nutty center and a touch of pistachio'),
+        C('Chocolate Chip Cookie', '120', 'per piece', '', 'Exotic, chewy cookie loaded with dark chocolate cubes — with more chocolate'),
+        C('Banana Olive Muffin', '95', 'per piece', '', 'Warm banana muffin studded with chocolate chips and a hint of olive oil richness'),
+        C('Fudge Brownies', '90', 'per piece', 'Box of 6 ₱480 · box of 12 ₱920', 'Dense fudge brownie bars'),
+        C('Mint Brownies', '90', 'per piece', 'Box of 6 ₱480 · box of 12 ₱920', 'Fudge brownie bars with a cool mint layer'),
+        C('Peanut Butter Crunch', '110', 'per piece', '', 'Peanut butter bar with a crisp crunch layer'),
+        C('Smores Rocky Road', '110', 'per piece', '', 'Marshmallow, biscuit and chocolate rocky road bar'),
+        C('Oreo Bar', '110', 'per piece', '', 'Cookies and cream bar'),
+        C('Creme Brulee', '170', 'per piece', '', 'Torched custard with a crisp caramel top')
+      ],
+      'Custom & minimalist': [
+        C('Minimalist Pink', '1,140', 'whole', '', 'Chiffon and moist chocolate cake with pink icing'),
+        C('Minimalist Blue', '1,140', 'whole', '', 'Chiffon and moist chocolate cake with blue icing'),
+        C('Two Tier Cake', '2,700', 'whole', 'Lead time applies', 'Two tiers, decorated to your occasion'),
+        C('Berry Chocolate', '1,390', 'whole', '', 'Moist chocolate cake with fresh strawberries on top'),
+        C('Strawberry Shortcake', '1,300', 'whole', '', 'Chocolate chiffon topped with fresh strawberries, layered with pure cream filling and fresh cream')
+      ]
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const page = s.page;
+    const menus = this.data();
+    const isBS = page === 'blacksheep';
+    const tabNames = isBS ? ['Black Sheep food', 'Black Sheep drinks'] : ['Food', 'Drinks', 'Breakfast', 'Family box'];
+    const tab = tabNames.indexOf(s.tab) >= 0 ? s.tab : tabNames[0];
+    const q = s.q.trim().toLowerCase();
+    let sections = (menus[tab] || []).map(sec => ({
+      name: sec.name, note: sec.note || '',
+      items: q ? sec.items.filter(i => (i.n + ' ' + i.d + ' ' + i.p).toLowerCase().includes(q)) : sec.items
+    })).filter(sec => sec.items.length);
+
+    const cakes = this.cakeData();
+    const cakeTabNames = Object.keys(cakes);
+    const cakeTab = cakeTabNames.indexOf(s.cakeTab) >= 0 ? s.cakeTab : cakeTabNames[0];
+
+    const branches = [
+      { name: 'Lahug', slot: 'br-lahug', hours: '7:30 am – 10:00 pm', address: 'Tsai Hotel, 11 Wilson St, Lahug, Cebu City', phone: '0933 875 1159', where: 'Tsai Hotel, Wilson St', extra: 'Ground floor, street parking along Wilson St.' },
+      { name: 'Banilad Town Centre', slot: 'br-btc', hours: '7:30 am – 10:00 pm', address: 'Unit 101 Banilad Town Centre, Cebu City', phone: '0933 811 1211', where: 'Unit 101, BTC', extra: 'Home of the Black Sheep menu and The Pelican Event Hall (up to 120 guests).' },
+      { name: 'Kasambagan', slot: 'br-kasambagan', hours: '7:30 am – 10:00 pm', address: '12 President Aguinaldo St, Cebu City', phone: '0919 096 5707', where: '12 Pres. Aguinaldo St', extra: 'The Pelican Event Hall Kasambagan sits upstairs (up to 42 guests).' },
+      { name: 'Banawa', slot: 'br-banawa', hours: '7:30 am – 10:00 pm', address: 'Paseo Arcenas, R. Arcenas St, Cebu City', phone: '0928 511 8884', where: 'Paseo Arcenas', extra: 'Now accepting reservations on the 2nd floor — Mon to Thu 7:30 am – 8:30 pm, Fri to Sun 7:30 am – 5:00 pm.' }
+    ];
+
+    const buffet = (name, tag, courses, tiers) => ({ name, tag, courses, tiers });
+
+    return {
+      nav: [
+        { label: 'Home', key: 'home' }, { label: 'Menu', key: 'menu' }, { label: 'Black Sheep', key: 'blacksheep' },
+        { label: 'Cake', key: 'cake' }, { label: 'Event Hall', key: 'events' }, { label: 'Contact', key: 'contact' }
+      ].map(n => ({ label: n.label, active: page === n.key, go: this.go(n.key) })),
+      goHome: this.go('home'), goMenu: this.go('menu'), goBlacksheep: this.go('blacksheep'),
+      goCake: this.go('cake'), goEvents: this.go('events'), goContact: this.go('contact'),
+
+      isHome: page === 'home', isMenuPage: page === 'menu' || isBS, isCake: page === 'cake',
+      isEvents: page === 'events', isContact: page === 'contact',
+
+      heroA: page === 'home' && s.hero === 'a', heroB: page === 'home' && s.hero === 'b', heroC: page === 'home' && s.hero === 'c',
+      heroOpts: [['a', 'A · Split'], ['b', 'B · Full-bleed'], ['c', 'C · Type mosaic']].map(([k, label]) => ({
+        label, active: s.hero === k, off: s.hero !== k, go: () => this.setState({ hero: k })
+      })),
+      showReviews: this.props.showReviews !== false,
+
+      menuKicker: isBS ? 'Banilad Town Centre only' : 'Tamp Cafe & Co.',
+      menuTitle: isBS ? 'The Black Sheep menu' : 'What we are cooking',
+      menuBlurb: isBS
+        ? 'The Black Sheep board runs alongside the Tamp menu at Banilad Town Centre — six specials you will not find at the other branches, plus its own drinks list. Opens 7:30 am.'
+        : 'Breakfast from 7:30 am, kitchen open until 10:00 pm. Search any dish or tap a board below.',
+      tabs: tabNames.map(t => ({ label: t.replace('Black Sheep ', ''), active: t === tab, off: t !== tab, go: () => this.setState({ tab: t }) })),
+      sections, noResults: !!q && !sections.length, q: s.q,
+      onSearch: (e) => this.setState({ q: e.target.value }),
+
+      cakeTabs: cakeTabNames.map(t => ({ label: t, active: t === cakeTab, off: t !== cakeTab, go: () => this.setState({ cakeTab: t }) })),
+      cakes: cakes[cakeTab],
+
+      newItems: [
+        { name: 'Cereal Chicken', slot: 'new-cereal-chicken', desc: 'Crispy chicken tossed in buttery breakfast cereal and fragrant asian herbs.', price: '₱385 · to share' },
+        { name: 'Black Peach', slot: 'new-black-peach', desc: 'Iced black coffee with peach syrup.', price: '₱195 · iced' },
+        { name: 'Sea Salt Macchiato', slot: 'new-sea-salt-macchiato', desc: 'Bold espresso latte topped with creamy sea salt foam.', price: '₱225 · iced' },
+        { name: 'Sea Salt Matcha', slot: 'new-sea-salt-matcha', desc: 'A rich matcha latte finished with luscious sea salt foam.', price: '₱235 · iced' }
+      ],
+      pillars: [
+        { kicker: 'Order 2 days ahead', title: 'Tamp Signature Cakes', body: 'Thirty-something whole cakes, from Chocolate Blackout to Pistachio Decadence. Slices available daily at the chiller.', cta: 'See cakes', slot: 'pillar-cake', slotLabel: 'Cake slice on a plate', go: this.go('cake') },
+        { kicker: 'Two boards', title: 'Food & Drinks', body: 'All-day breakfast, Asian comfort plates, a full brew bar — plus the Black Sheep specials at Banilad Town Centre.', cta: 'Open the menu', slot: 'pillar-food', slotLabel: 'Drinks on a table', go: this.go('menu') },
+        { kicker: 'Up to 120 guests', title: 'The Pelican Event Hall', body: 'Intimate weddings, birthdays and corporate gatherings at Kasambagan and Banilad Town Centre.', cta: 'Plan an event', slot: 'pillar-pelican', slotLabel: 'Event hall long table', go: this.go('events') }
+      ],
+      branches, branchesShort: branches.map(b => ({ name: b.name, where: b.where })),
+      reviews: [
+        { quote: 'As a regular customer, I can confidently say that the food, ambiance, and staff never disappoint on every visit. Tamp Lahug is our go-to spot, and I rate it a solid 10/10.', by: 'Gianni Nichole Capili', branch: 'Lahug' },
+        { quote: 'The ambiance of the place was great. The food was delish and portion was more than what we expected. Also, don\u2019t miss out their promo.', by: 'Shaznay Mabaylan', branch: 'Banilad Town Centre' },
+        { quote: 'Had a great dining experience at Tamp! The food was delicious, and the service was excellent. My friend and I took advantage of their Piso Cake promo \u2014 a tasty slice of cake for just one peso.', by: 'Jessa Raganas', branch: 'Kasambagan' },
+        { quote: 'Its the Very Best Service. And the Food is Outstanding. French Onion Soup, Steak Sandwich, Salad and Red Velvet Cake and Blueberry Cheesecake. All Very Good.', by: 'Robbi Falkner', branch: 'Paseo Banawa' }
+      ],
+      venues: [
+        { name: 'Kasambagan', cap: 'Up to 42 guests', slot: 'venue-kasambagan', slotLabel: 'Pelican Kasambagan facade', address: 'No. 12, Pres. Aguinaldo St., Kasambagan, Cebu City' },
+        { name: 'Banilad Town Centre', cap: 'Up to 120 guests', slot: 'venue-btc', slotLabel: 'Pelican BTC facade', address: 'Unit 201, Banilad Town Centre, Gov. M. Cuenco Ave., Cebu City' }
+      ],
+      buffets: [
+        buffet('Asian', 'Buffet 1 · Kasambagan', [
+          { label: 'Salad', items: 'Mango kani salad' },
+          { label: 'Mains', items: 'Sticky korean chicken wings · Slow cooked pot roast beef · Shrimp in thai street cilantro sauce' },
+          { label: 'Pasta', items: 'Tomato basil pasta' },
+          { label: 'Dessert & drinks', items: 'Fudge brownie bites · 1 round dalandan juice' }
+        ], [{ pax: '24 – 30 pax', price: '₱20,900' }, { pax: '30 – 36 pax', price: '₱26,260' }, { pax: '36 – 42 pax', price: '₱31,620' }]),
+        buffet('Filipino', 'Buffet 1 · Kasambagan', [
+          { label: 'Salad', items: 'Tupplenut salad' },
+          { label: 'Mains', items: 'Pork kawali in tomato & onion stew · Slow cooked pot roast beef · Prawn paste chicken' },
+          { label: 'Pasta', items: 'Tomato basil pasta' },
+          { label: 'Dessert & drinks', items: 'Fudge brownie bites · 1 round dalandan juice' }
+        ], [{ pax: '24 – 30 pax', price: '₱22,500' }, { pax: '30 – 36 pax', price: '₱27,960' }, { pax: '36 – 42 pax', price: '₱33,320' }]),
+        buffet('Western', 'Buffet 1 · Kasambagan', [
+          { label: 'Salad & soup', items: 'Tupplenut salad · Tomato herb or truffled mushroom soup' },
+          { label: 'Mains', items: 'American pork ribs · Beef stroganoff' },
+          { label: 'Pasta', items: 'Tomato basil pasta' },
+          { label: 'Dessert & drinks', items: 'Fudge brownie bites · 1 round dalandan juice' }
+        ], [{ pax: '24 – 30 pax', price: '₱21,600' }, { pax: '30 – 36 pax', price: '₱26,760' }, { pax: '36 – 42 pax', price: '₱32,120' }]),
+        buffet('Asian', 'Buffet 2 · Banilad Town Centre', [
+          { label: 'Salad', items: 'Mango kani salad' },
+          { label: 'Pasta', items: 'Bonito wafu pasta' },
+          { label: 'Mains', items: 'Chicken tartar · Asian caramelized pork · Japanese beef gyudon niku' },
+          { label: 'Dessert & drinks', items: 'Brownie bites · 1 round dalandan juice · Plain rice' }
+        ], [{ pax: '30 pax half hall', price: '₱32,400' }, { pax: '50 pax full hall', price: '₱55,100' }, { pax: '120 pax full hall', price: '₱119,900' }]),
+        buffet('Filipino', 'Buffet 2 · Banilad Town Centre', [
+          { label: 'Salad', items: 'Salted egg with mango quinoa' },
+          { label: 'Pasta', items: 'Tomato and basil pasta' },
+          { label: 'Mains', items: 'Chicken parmigiana · Pork kawali in tomato and onion stew · Pan seared fish with mango salsa' },
+          { label: 'Dessert & drinks', items: 'Brownie bites · 1 round dalandan juice · Plain rice' }
+        ], [{ pax: '30 pax half hall', price: '₱28,700' }, { pax: '50 pax full hall', price: '₱49,500' }, { pax: '120 pax full hall', price: '₱106,800' }]),
+        buffet('Black Sheep', 'Specials buffet · Banilad Town Centre', [
+          { label: 'Salad', items: 'Caesar salad' },
+          { label: 'Pasta', items: 'Spinach & blue cheese rigatoni' },
+          { label: 'Mains', items: 'Peri peri grilled chicken · Japanese beef gyudon niku · Cereal prawn' },
+          { label: 'Dessert & drinks', items: 'Brownie bites · 1 round dalandan juice · Plain rice' }
+        ], [{ pax: '30 pax half hall', price: '₱40,800' }, { pax: '50 pax full hall', price: '₱68,800' }, { pax: '120 pax full hall', price: '₱150,700' }])
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

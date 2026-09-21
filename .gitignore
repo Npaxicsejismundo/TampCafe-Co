@@ -1,0 +1,5 @@
+node_modules
+dist
+.claude
+# Screenshots of the old site used while designing (~39MB)
+design-reference/*.png
