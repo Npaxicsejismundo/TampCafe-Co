@@ -11,19 +11,16 @@ export default function Cake() {
 
   return (
     <div className="container page">
-      <div className="split">
-        <div>
-          <div className="eyebrow eyebrow--clay">Tamp Signature Cakes</div>
-          <h1 className="page-title page-title--xl">
-            Baked for the <em>occasion</em>.
-          </h1>
-          <p className="page-lede">
-            Whole cakes are made to order — please pre-order at least two days in advance. Slices are available daily
-            at the chiller counter in all four branches.
-          </p>
-          <a href={LINKS.cakeOrderForm} className="btn btn--forest">Open the cake order form</a>
-        </div>
-        <Photo className="split__media" alt="Cake chiller counter / signature cake" />
+      <div className="cake-intro">
+        <div className="eyebrow eyebrow--clay">Tamp Signature Cakes</div>
+        <h1 className="page-title page-title--xl">
+          Baked for the <em>occasion</em>.
+        </h1>
+        <p className="page-lede">
+          Whole cakes are made to order — please pre-order at least two days in advance. Slices are available daily at
+          the chiller counter in all four branches.
+        </p>
+        <a href={LINKS.cakeOrderForm} className="btn btn--forest">Open the cake order form</a>
       </div>
 
       <div className="tabbar tabbar--spaced">

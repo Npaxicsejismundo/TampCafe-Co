@@ -249,9 +249,8 @@ em { font-style: italic; }
 .note-card__text { font-size: 14px; color: var(--muted); margin-top: 5px; line-height: 1.5; }
 
 /* ---------- Cake ---------- */
-.split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: center; margin-bottom: 56px; }
-.split .page-title { margin-top: 14px; }
-.split__media { height: 380px; border-radius: 18px; }
+.cake-intro { margin-bottom: 48px; }
+.cake-intro .page-title { margin-top: 14px; }
 .cake-grid { gap: 28px 18px; }
 .cake { display: flex; flex-direction: column; }
 .cake__media { aspect-ratio: 1 / 1; border-radius: 14px; }
@@ -355,8 +354,6 @@ em { font-style: italic; }
   .hero__badge { left: 16px; bottom: 20px; }
 
   .grid--3, .grid--2 { grid-template-columns: 1fr; }
-  .split { grid-template-columns: 1fr; gap: 32px; }
-  .split__media { height: 280px; }
   .menu-cols { columns: 1; }
   .search { min-width: 0; width: 100%; }
   .page-title { font-size: 48px; }
